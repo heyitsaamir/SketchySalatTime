@@ -9,6 +9,57 @@ CALCULATION_METHOD="2" # 0=Shia Ithna-Ansari, 1=University of Islamic Sciences, 
 SCHOOL="1"          # 0=Shafi (default), 1=Hanafi
 SHOW_NEXT="true"    # "true" = show next upcoming time, "false" = show last passed time
 
+# Initialize popup (one-time setup)
+if ! sketchybar --query salat.fajr &>/dev/null; then
+    # Configure main item with popup styling
+    sketchybar --set "$NAME" \
+               click_script="sketchybar --set $NAME popup.drawing=toggle" \
+               popup.background.color=0xcc000000 \
+               popup.background.corner_radius=8 \
+               popup.background.border_width=2 \
+               popup.background.border_color=0xff444444 \
+               popup.blur_radius=30 \
+               popup.background.shadow.drawing=on
+
+    # Create popup items
+    sketchybar --add item salat.fajr popup."$NAME" \
+               --set salat.fajr icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22 \
+               --add item salat.sunrise popup."$NAME" \
+               --set salat.sunrise icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22 \
+               --add item salat.dhuhr popup."$NAME" \
+               --set salat.dhuhr icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22 \
+               --add item salat.asr popup."$NAME" \
+               --set salat.asr icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22 \
+               --add item salat.maghrib popup."$NAME" \
+               --set salat.maghrib icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22 \
+               --add item salat.isha popup."$NAME" \
+               --set salat.isha icon.font="Hack Nerd Font:Bold:14.0" \
+                     label.font="Hack Nerd Font:Regular:14.0" \
+                     icon.padding_right=10 \
+                     background.corner_radius=5 \
+                     background.height=22
+fi
+
 # Cache directory
 CACHE_DIR="$HOME/.cache/sketchybar"
 mkdir -p "$CACHE_DIR"

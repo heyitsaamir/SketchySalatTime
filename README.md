@@ -36,65 +36,20 @@ cp salat.sh ~/.config/sketchybar/plugins/
 chmod +x ~/.config/sketchybar/plugins/salat.sh
 ```
 
-3. Add the plugin to your `sketchybarrc`:
+3. Configure your location by editing `~/.config/sketchybar/plugins/salat.sh` (lines 4-10)
+
+4. Add to your `sketchybarrc`:
 ```bash
 sketchybar --add item salat right \
-           --set salat update_freq=60 script="$PLUGIN_DIR/salat.sh" \
-                 click_script="sketchybar --set salat popup.drawing=toggle" \
-                 popup.background.color=0xcc000000 \
-                 popup.background.corner_radius=8 \
-                 popup.background.border_width=2 \
-                 popup.background.border_color=0xff444444 \
-                 popup.blur_radius=30 \
-                 popup.background.shadow.drawing=on \
-           --add item salat.fajr popup.salat \
-           --set salat.fajr icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22 \
-           --add item salat.sunrise popup.salat \
-           --set salat.sunrise icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22 \
-           --add item salat.dhuhr popup.salat \
-           --set salat.dhuhr icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22 \
-           --add item salat.asr popup.salat \
-           --set salat.asr icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22 \
-           --add item salat.maghrib popup.salat \
-           --set salat.maghrib icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22 \
-           --add item salat.isha popup.salat \
-           --set salat.isha icon.font="Hack Nerd Font:Bold:14.0" \
-                 label.font="Hack Nerd Font:Regular:14.0" \
-                 icon.padding_right=10 \
-                 background.drawing=off \
-                 background.corner_radius=5 \
-                 background.height=22
+           --set salat update_freq=60 script="$PLUGIN_DIR/salat.sh"
 ```
 
-4. Reload SketchyBar:
+5. Reload SketchyBar:
 ```bash
 sketchybar --reload
 ```
+
+The plugin will automatically set up its popup on first run!
 
 ## Configuration
 
