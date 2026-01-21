@@ -1,5 +1,10 @@
 #!/bin/sh
 
+# Helper functions for popup control
+popup() {
+    sketchybar --set "$NAME" popup.drawing="$1"
+}
+
 # Configuration - customize these values
 LOCATION="Renton, WA"  # Your city/address
 CALCULATION_METHOD="2" # 0=Shia Ithna-Ansari, 1=University of Islamic Sciences, Karachi
@@ -13,7 +18,6 @@ SHOW_NEXT="true"    # "true" = show next upcoming time, "false" = show last pass
 if ! sketchybar --query salat.fajr &>/dev/null; then
     # Configure main item with popup styling
     sketchybar --set "$NAME" \
-               click_script="sketchybar --set $NAME popup.drawing=toggle" \
                popup.background.color=0xcc000000 \
                popup.background.corner_radius=8 \
                popup.background.border_width=2 \
@@ -60,9 +64,11 @@ if ! sketchybar --query salat.fajr &>/dev/null; then
                      background.height=22
 fi
 
-# Cache directory
-CACHE_DIR="$HOME/.cache/sketchybar"
-mkdir -p "$CACHE_DIR"
+# Main update function
+update() {
+    # Cache directory
+    CACHE_DIR="$HOME/.cache/sketchybar"
+    mkdir -p "$CACHE_DIR"
 
 # Get current and next month info
 CURRENT_MONTH=$(date +%-m)
@@ -299,3 +305,23 @@ if [ -n "$CURRENT_PRAYER" ]; then
         background.padding_left=5 \
         background.padding_right=5
 fi
+}
+
+# Event handler
+case "$SENDER" in
+  "mouse.clicked")
+    popup toggle
+    ;;
+  "mouse.entered")
+    popup on
+    ;;
+  "mouse.exited"|"mouse.exited.global")
+    popup off
+    ;;
+  "routine"|"forced")
+    update
+    ;;
+  *)
+    update
+    ;;
+esac
