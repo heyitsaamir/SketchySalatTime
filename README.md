@@ -2,25 +2,19 @@
 
 A SketchyBar plugin that displays Islamic prayer times in your macOS menu bar with a beautiful popup showing all daily prayers.
 
+> [!NOTE]  
+> I use this myself, and it's based off of the work I did to build a native menubar app (https://github.com/heyitsaamir/SalatTimesBar).
+> However, you should note that this was entirely coded with Claude Code with some guidance from me.
+
 ## Features
 
 - 🕌 Displays current or next prayer time in menu bar
 - 📅 Shows all 6 daily times (Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha)
-- 🎨 Popup with translucent background and system accent color highlighting
-- 🌍 Configurable location and calculation method
-- ⚡ Efficient caching (fetches data once per month)
-- 🎯 Automatic cleanup of old cached data
 
-## Requirements
+## Pre-req
 
-- [SketchyBar](https://github.com/FelixKratz/SketchyBar)
-- `jq` (for JSON parsing)
-- `curl` (for API requests)
-
-Install dependencies via Homebrew:
-```bash
-brew install jq
-```
+1. SketchyBar - https://github.com/FelixKratz/SketchyBar
+2. jq https://jqlang.org/
 
 ## Installation
 
@@ -36,7 +30,7 @@ cp salat.sh ~/.config/sketchybar/plugins/
 chmod +x ~/.config/sketchybar/plugins/salat.sh
 ```
 
-3. Configure your location by editing `~/.config/sketchybar/plugins/salat.sh` (lines 4-10)
+3. Configure your location by editing `~/.config/sketchybar/plugins/salat.sh`
 
 4. Add to your `sketchybarrc`:
 ```bash
@@ -79,25 +73,3 @@ SCHOOL="1"
 # "false" = show last passed prayer time
 SHOW_NEXT="true"
 ```
-
-## Usage
-
-- **View times**: Click on the prayer time in your menu bar to show/hide the popup
-- **Current prayer**: The current prayer time is highlighted with your system accent color
-- **Auto-update**: Times refresh every 60 seconds automatically
-
-## Data Source
-
-Prayer times are fetched from the [Aladhan API](https://aladhan.com/prayer-times-api). Data is cached locally for the current and next month to minimize API calls.
-
-## Cache
-
-Prayer times are cached in `~/.cache/sketchybar/salat_times_YYYY-MM.json`. Old cache files are automatically cleaned up.
-
-## License
-
-MIT
-
-## Credits
-
-Inspired by [SalatTimesBar](https://github.com/heyitsaamir/SalatTimesBar) - a native macOS menu bar app for prayer times.
