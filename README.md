@@ -2,9 +2,11 @@
 
 A SketchyBar plugin that displays Islamic prayer times in your macOS menu bar with a beautiful popup showing all daily prayers.
 
-> [!NOTE]  
+> [!NOTE]
 > I use this myself, and it's based off of the work I did to build a native menubar app (https://github.com/heyitsaamir/SalatTimesBar).
 > However, you should note that this was entirely coded with Claude Code with some guidance from me.
+
+![SketchySalatTime Screenshot](screenshot.png)
 
 ## Features
 
